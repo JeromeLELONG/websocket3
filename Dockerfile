@@ -27,8 +27,8 @@ RUN apt-get install -y nodejs-legacy
 COPY testangular6 /usr/src
 WORKDIR /usr/src/
 #RUN npm cache clean -f
-RUN npm install -g n
-RUN n stable
+#RUN npm install -g n
+#RUN n stable
 RUN npm install --force
 WORKDIR /var/www/html/
 #COPY composer.phar /var/www/html/project/composer.phar
