@@ -24,15 +24,12 @@ RUN openssl req -new -x509 -days 365 -keyout /etc/ssl/private/ssl-cert-snakeoil.
 RUN apt-get install -y nodejs
 RUN apt-get install -y nodejs-legacy
 #RUN apt-get install -y npm
-RUN apt-get update && apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-RUN apt-get update && apt-get install -y nodejs
 COPY testangular6 /usr/src
 WORKDIR /usr/src/
-RUN npm cache clean -f
-RUN npm install -g n
+RUN /usr/local/bin/npm cache clean -f
+RUN /usr/local/bin/npm install -g n
 RUN n stable
-RUN npm install --force
+RUN /usr/local/bin/npm install --force
 WORKDIR /var/www/html/
 #COPY composer.phar /var/www/html/project/composer.phar
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
