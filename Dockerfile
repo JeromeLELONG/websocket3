@@ -24,11 +24,11 @@ RUN openssl req -new -x509 -days 365 -keyout /etc/ssl/private/ssl-cert-snakeoil.
 RUN apt-get install -y nodejs
 RUN apt-get install -y nodejs-legacy
 #RUN apt-get install -y npm
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
-    && apt-get install -y nodejs \
-    && npm install -g react-tools
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get install -y nodejs
+RUN npm install -g react-tools
 COPY testangular6 /usr/src
 WORKDIR /usr/src/
 RUN npm cache clean -f
