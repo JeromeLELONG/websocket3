@@ -23,12 +23,12 @@ RUN openssl req -new -x509 -days 365 -keyout /etc/ssl/private/ssl-cert-snakeoil.
 #RUN apt-get install -y php-ldap
 RUN apt-get install -y nodejs
 RUN apt-get install -y nodejs-legacy
-#RUN apt-get install -y npm
+RUN apt-get install -yf npm
 COPY testangular6 /usr/src
 WORKDIR /usr/src/
-#RUN npm cache clean -f
-#RUN npm install -g n
-#RUN n stable
+RUN npm cache clean -f
+RUN npm install -g n
+RUN n stable
 RUN npm install --force
 WORKDIR /var/www/html/
 #COPY composer.phar /var/www/html/project/composer.phar
