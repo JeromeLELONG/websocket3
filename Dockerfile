@@ -8,15 +8,15 @@ RUN \
     docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
     docker-php-ext-install ldap 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
-RUN apt-get update && apt-get install -y \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libmcrypt-dev \
-        libpng-dev \
-        libapache2-mod-proxy-html \
-    && docker-php-ext-install -j$(nproc) iconv mcrypt \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd
+RUN apt-get update && apt-get install -y
+RUN apt-get install -y libfreetype6-dev
+RUN apt-get install -y libjpeg62-turbo-dev
+RUN apt-get install -y libmcrypt-dev
+RUN apt-get install -y libpng-dev
+RUN apt-get install -y libapache2-mod-proxy-html
+RUN docker-php-ext-install -j$(nproc) iconv mcrypt
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-install -j$(nproc) gd
 RUN apt install -y net-tools
 RUN openssl req -new -x509 -days 365 -keyout /etc/ssl/private/ssl-cert-snakeoil.key -out /etc/ssl/certs/ssl-cert-snakeoil.pem -nodes -subj  '/O=VirtualHost Website Company name/OU=Virtual Host Website department/CN=example.com'
 #RUN apt-get install php-mysql
