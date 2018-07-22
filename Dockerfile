@@ -22,11 +22,10 @@ RUN openssl req -new -x509 -days 365 -keyout /etc/ssl/private/ssl-cert-snakeoil.
 #RUN apt-get install php-mysql
 #RUN apt-get install -y php-ldap
 RUN apt-get install -y nodejs
-RUN apt-get install -y nodejs-legacy
+#RUN apt-get install -y nodejs-legacy
 #RUN apt-get install -y npm
 COPY testangular6 /usr/src
 WORKDIR /usr/src/
-RUN find / -name npm
 RUN npm cache clean -f
 RUN npm install -g n
 RUN n stable
