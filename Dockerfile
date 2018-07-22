@@ -24,7 +24,7 @@ RUN openssl req -new -x509 -days 365 -keyout /etc/ssl/private/ssl-cert-snakeoil.
 RUN apt-get install -y nodejs
 RUN apt-get install -y nodejs-legacy
 #RUN apt-get install -y npm
-RUN apt-get install git-core curl build-essential openssl libssl-dev \
+RUN apt-get install -y git-core curl build-essential openssl libssl-dev \
  && git clone https://github.com/nodejs/node.git \
  && cd node \
  && ./configure \
