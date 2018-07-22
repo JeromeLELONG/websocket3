@@ -39,7 +39,7 @@ COPY src/bin /var/www/html/bin
 COPY src/src /var/www/html/src
 COPY src/composer.json /var/www/html/composer.json
 COPY runtime.js /var/www/html/node/runtime.js
-RUN ln -s /var/www/html/runtime.js node/runtime.js
+RUN ln -s node/runtime.js runtime.js
 RUN rm /var/www/html/node/runtime.js
 RUN a2enmod rewrite
 RUN a2enmod ssl
