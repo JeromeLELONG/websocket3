@@ -26,10 +26,11 @@ RUN apt-get install -y nodejs-legacy
 #RUN apt-get install -y npm
 COPY testangular6 /usr/src
 WORKDIR /usr/src/
-RUN /usr/local/bin/npm cache clean -f
-RUN /usr/local/bin/npm install -g n
+RUN find / -name npm
+RUN npm cache clean -f
+RUN npm install -g n
 RUN n stable
-RUN /usr/local/bin/npm install --force
+RUN npm install --force
 WORKDIR /var/www/html/
 #COPY composer.phar /var/www/html/project/composer.phar
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
