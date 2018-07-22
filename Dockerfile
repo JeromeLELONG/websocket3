@@ -26,7 +26,7 @@ RUN apt-get install -y nodejs-legacy
 #RUN apt-get install -y npm
 COPY testangular6 /usr/src
 WORKDIR /usr/src/
-RUN npm cache clean -f
+#RUN npm cache clean -f
 RUN npm install -g n
 RUN n stable
 RUN npm install --force
