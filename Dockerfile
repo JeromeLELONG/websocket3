@@ -24,12 +24,9 @@ RUN openssl req -new -x509 -days 365 -keyout /etc/ssl/private/ssl-cert-snakeoil.
 RUN apt-get install -y nodejs
 RUN apt-get install -y nodejs-legacy
 #RUN apt-get install -y npm
-RUN apt-get install -y git-core curl build-essential openssl libssl-dev
-RUN git clone https://github.com/nodejs/node.git
-RUN cd node
-RUN ./configure
-RUN make
-RUN sudo make install
+RUN apt-get update && apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get update && apt-get install -y nodejs
 COPY testangular6 /usr/src
 WORKDIR /usr/src/
 RUN npm cache clean -f
