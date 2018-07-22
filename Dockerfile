@@ -8,7 +8,7 @@ RUN \
     docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
     docker-php-ext-install ldap 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
-RUN apt-get update && apt-get install -y
+RUN apt-get update
 RUN apt-get install -y libfreetype6-dev
 RUN apt-get install -y libjpeg62-turbo-dev
 RUN apt-get install -y libmcrypt-dev
@@ -23,7 +23,12 @@ RUN openssl req -new -x509 -days 365 -keyout /etc/ssl/private/ssl-cert-snakeoil.
 #RUN apt-get install -y php-ldap
 RUN apt-get install -y nodejs
 RUN apt-get install -y nodejs-legacy
-RUN apt-get update && apt-get install -y npm
+#RUN apt-get install -y npm
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g react-tools
 COPY testangular6 /usr/src
 WORKDIR /usr/src/
 RUN npm cache clean -f
