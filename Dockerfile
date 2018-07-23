@@ -57,6 +57,7 @@ COPY src/composer.phar /var/www/html/composer.phar
 RUN php /var/www/html/composer.phar install
 RUN chown -R www-data:www-data /var/www
 COPY start.sh /etc/
+EXPOSE 8080
 CMD ["/bin/sh","/etc/start.sh"] 
 #CMD php bin/chat-server.php
 #COPY composer.json /var/www/html/project/composer.json
