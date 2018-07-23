@@ -25,7 +25,7 @@ RUN apt-get install -y nodejs
 #RUN apt-get install -y nodejs-legacy
 #RUN apt-get install -y npm
 #RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E sh -
-RUN ls /usr/share/
+RUN find / -name npm
 COPY testangular6 /usr/src
 WORKDIR /usr/src/
 RUN npm cache clean -f
