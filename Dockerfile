@@ -27,9 +27,9 @@ RUN openssl req -new -x509 -days 365 -keyout /etc/ssl/private/ssl-cert-snakeoil.
 #RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E sh -
 #RUN apt-get add bash
 RUN apt-get -y install curl bash
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
-RUN apt-get install -y npm
+#RUN apt-get install -y npm
 COPY testangular6 /usr/src
 WORKDIR /usr/src/
 RUN npm cache clean -f
