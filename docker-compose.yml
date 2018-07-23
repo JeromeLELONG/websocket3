@@ -1,0 +1,12 @@
+
+apache:
+    #image: php:apache
+    container_name: apache
+    build: ./dev
+    volumes:
+    - "/root/websocket3/src/:/var/www/html/"
+    - "/root/websocket3/testangular6:/usr/src/"
+    ports:
+    - "8080:8080"
+    - "443:443"
+    privileged: true

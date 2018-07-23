@@ -1,20 +1,24 @@
 import { Component } from '@angular/core';
 import { WebsocketService } from './websocket.service';
 import { ChatService } from './chat.service';
+import {MessageService} from 'primeng/components/common/messageservice';
+import {Message} from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [ WebsocketService, ChatService ]
+  providers: [ WebsocketService, ChatService,MessageService ]
 })
 export class AppComponent {
+  msgs: Message[] = [];
   title = 'testangular6';
   myValues: string[] = ['valeur1','valeur2'];
   conn: WebSocket;
-  constructor(private chatService: ChatService) {
+  constructor(private chatService: ChatService,private messageService: MessageService) {
     chatService.messages.subscribe(msg => {			
       console.log("Response from websocket: " + msg.message);
+      this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
       console.log(msg.data);
 		});
     /*

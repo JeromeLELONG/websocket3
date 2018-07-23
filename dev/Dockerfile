@@ -22,26 +22,23 @@ RUN apt-get -y install curl build-essential wget gnupg
 RUN bash --version
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
-COPY testangular6 /usr/src
 WORKDIR /usr/src/
-RUN npm cache clean -f
-RUN npm install -g n
-RUN n stable
-RUN npm install --force
-WORKDIR /var/www/html/
-COPY src/000-default.conf /etc/apache2/sites-available/000-default.conf
-COPY src/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
-COPY src/ports.conf /etc/apache2/ports.conf
-COPY src/bin /var/www/html/bin
-COPY src/src /var/www/html/src
-COPY src/composer.json /var/www/html/composer.json
+# RUN npm cache clean -f
+# RUN npm install -g n
+# RUN n stable
+# RUN npm install --force
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+COPY ports.conf /etc/apache2/ports.conf
 RUN a2enmod rewrite
 RUN a2enmod ssl
 RUN a2ensite default-ssl
 RUN a2enmod rewrite proxy proxy_http proxy_wstunnel
-COPY src/composer.phar /var/www/html/composer.phar
-RUN php /var/www/html/composer.phar install
 RUN chown -R www-data:www-data /var/www
-COPY src/start.sh /etc/
+COPY start.sh /etc/
+WORKDIR /var/www/html/
+COPY composer.phar /var/www/html/composer.phar
+COPY composer.json /var/www/html/composer.json
+# RUN php /var/www/html/composer.phar install
 EXPOSE 8080
 CMD ["/bin/sh","/etc/start.sh"] 

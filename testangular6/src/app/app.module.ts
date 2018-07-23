@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import {GrowlModule} from 'primeng/growl';
 
 // Apollo
 import { GraphQLModule } from "./graphql.module/graphql.module";
@@ -18,7 +19,7 @@ import { GraphQLModule } from "./graphql.module/graphql.module";
     HomeComponent,
   ],
   imports: [
-    BrowserModule,GraphQLModule,FormsModule,NgbModule.forRoot(),AppRoutingModule
+    BrowserModule,GraphQLModule,FormsModule,NgbModule.forRoot(),AppRoutingModule,GrowlModule
   ],
   providers: [],
   bootstrap: [AppComponent]
