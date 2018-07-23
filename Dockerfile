@@ -28,6 +28,7 @@ RUN openssl req -new -x509 -days 365 -keyout /etc/ssl/private/ssl-cert-snakeoil.
 #RUN apt-get add bash
 RUN apt-get -y install curl build-essential
 RUN apt-get -y install curl bash
+RUN bash --version
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
 #RUN apt-get install -y npm
