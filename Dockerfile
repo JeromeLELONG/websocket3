@@ -21,9 +21,9 @@ RUN apt install -y net-tools
 RUN openssl req -new -x509 -days 365 -keyout /etc/ssl/private/ssl-cert-snakeoil.key -out /etc/ssl/certs/ssl-cert-snakeoil.pem -nodes -subj  '/O=VirtualHost Website Company name/OU=Virtual Host Website department/CN=example.com'
 #RUN apt-get install php-mysql
 #RUN apt-get install -y php-ldap
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs build-essential
 #RUN apt-get install -y nodejs-legacy
-RUN apt-get install -y npm
+#RUN apt-get install -y npm
 #RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E sh -
 COPY testangular6 /usr/src
 WORKDIR /usr/src/
