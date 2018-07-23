@@ -41,6 +41,7 @@ WORKDIR /var/www/html/
 #COPY composer.phar /var/www/html/project/composer.phar
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+COPY ports.conf /etc/apache2/ports.conf
 #COPY src/vendor /var/www/html/vendor
 COPY src/bin /var/www/html/bin
 COPY src/src /var/www/html/src
