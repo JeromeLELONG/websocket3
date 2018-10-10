@@ -6,6 +6,7 @@ apache:
     volumes:
     - "/root/websocket3/src/:/var/www/html/"
     - "/root/websocket3/testangular6:/usr/src/"
+    - "/root/websocket3/dev/sites-available/:/etc/apache2/sites-available/"
     ports:
     - "8080:8080"
     - "443:443"

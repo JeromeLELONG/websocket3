@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs/Rx';
 import { WebsocketService } from './websocket.service';
-
-const CHAT_URL = 'ws://'+window.location.host+'/ws2/';
-
+let CHAT_URL;
+if(window.location.protocol == 'http:')
+	CHAT_URL = 'ws://'+window.location.host+'/ws2/';
+else
+	CHAT_URL = 'wss://'+window.location.host+'/ws2/';
 export interface Message {
 	author: string,
 	message: string,

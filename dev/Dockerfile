@@ -27,8 +27,8 @@ WORKDIR /usr/src/
 # RUN npm install -g n
 # RUN n stable
 # RUN npm install --force
-COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
-COPY default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+COPY sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 COPY ports.conf /etc/apache2/ports.conf
 RUN a2enmod rewrite
 RUN a2enmod ssl

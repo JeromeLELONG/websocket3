@@ -9,3 +9,6 @@ install-php:
 install-node:
 	docker-compose -f docker-compose.yml run --rm --no-deps apache npm install --prefix /usr/src/
 install: install-php install-node
+
+reload-apache: 
+	docker-compose -f docker-compose.yml run --rm --no-deps apache /usr/sbin/apache2ctl  graceful
