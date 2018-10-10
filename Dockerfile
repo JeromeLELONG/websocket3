@@ -35,6 +35,7 @@ COPY src/ports.conf /etc/apache2/ports.conf
 COPY src/bin /var/www/html/bin
 COPY src/src /var/www/html/src
 COPY src/composer.json /var/www/html/composer.json
+COPY nodewebsocket /usr/websocket
 RUN a2enmod rewrite
 RUN a2enmod ssl
 RUN a2ensite default-ssl
